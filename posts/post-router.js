@@ -5,14 +5,31 @@ const db = require("../data/db-config.js");
 
 const router = express.Router();
 
+// router.get("/", async (req, res) => {
+//   //   db("posts")
+//   //     .then(posts => console.log(posts))
+//   //     .catch(err => console.log("ERR", err));
+
+//   try {
+//     const posts = await db("posts");
+//     // select * from posts
+//     res.json(posts);
+//   } catch (err) {
+//     res.status(500).json({ message: "Failed to get posts" });
+//   }
+// });
+
+// knex('users').orderBy('name', 'desc')
+
 router.get("/", async (req, res) => {
   //   db("posts")
   //     .then(posts => console.log(posts))
   //     .catch(err => console.log("ERR", err));
 
   try {
-    const posts = await db("posts");
+    const posts = await db("posts").orderBy("id", "desc");
     // select * from posts
+    console.log(post);
     res.json(posts);
   } catch (err) {
     res.status(500).json({ message: "Failed to get posts" });
